@@ -35,7 +35,7 @@ public class arbol {
         this.color = color;
     }
 
-    public void dibujar(Graphics g){
+    public void dibujarPaisaje(Graphics g){
         //Cielo
         g.setColor(Color.blue);
         g.fillRect(x,y,650 + tamano,100 + tamano);
@@ -45,14 +45,18 @@ public class arbol {
         //sol
         g.setColor(Color.yellow);
         g.fillOval(x + 645,y + 5,tamano - 50,tamano - 50);
-
-
     }
 
-    public void dibujarArbol(){
-        //arboles
-        /*gs.setColor(Color.BLACK);
-        gs.fillRect(x,y,tamano, tamano);*/
+    private void dibujarArbol(Graphics g, int x,int y, int tamano, int complejidad){
+        if(complejidad == 1){ //Dibujara solo la raiz proque complejidad es = 1
+            //arboles
+            g.setColor(Color.BLACK);
+            g.fillRect(x,y,tamano,tamano);
+            return;
+        }else{
+
+            g.fillRect(x,y,tamano, tamano);
+        }
     }
 
     public void addObserver(PropertyChangeListener listener){
