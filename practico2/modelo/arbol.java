@@ -11,8 +11,7 @@ public class arbol {
     private int tamano;
     private Color color;
 
-    public arbol(Color color,int tamano) {
-        this.color = color;
+    public arbol(int tamano) {
         x=0;
         y=0;
         this.tamano = tamano;

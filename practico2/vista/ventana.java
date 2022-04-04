@@ -22,7 +22,7 @@ public class ventana extends JFrame implements MouseListener {
         this.setTitle("Paisaje");
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.getContentPane().setLayout(new BorderLayout());
-        modelo = new arbol(Color.white,250);
+        modelo = new arbol(250);
         panel = new panel(modelo);
         this.getContentPane().add(panel,BorderLayout.CENTER);
 
@@ -48,7 +48,7 @@ public class ventana extends JFrame implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(e.getButton() == 1){
+        if(e.getButton() == 1 && e.getX() >= 0 && e.getX() <= 900 && e.getY() >= 350  && e.getY() <= 860 ){
             //modelo.dibujarArbol();
             System.out.println("Click... se dibuja el arbol");
             repaint();
