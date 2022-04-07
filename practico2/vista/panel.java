@@ -14,6 +14,7 @@ public class panel extends JPanel implements PropertyChangeListener {
 
     ArrayList<arbol> listaArbol;
     private paisaje paisaje;
+
     public panel(){
     }
 
@@ -39,6 +40,14 @@ public class panel extends JPanel implements PropertyChangeListener {
         }
     }
 
+    public void crearArbol(int x, int y) {
+        int complejidad = (int) (Math.random()*6+1);
+        System.out.println("Complejidad es = " + complejidad);
+        arbol aux = new arbol(x,y,10,complejidad);
+        listaArbol.add(aux);
+        repaint();
+    }
+
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if(evt.getPropertyName() != "Posición"){
@@ -47,10 +56,6 @@ public class panel extends JPanel implements PropertyChangeListener {
         repaint();
     }
 
-    public void crearArbol(int x, int y) {
-        arbol aux = new arbol(x,y,50,(y/100)+1);
-        listaArbol.add(aux);
-       repaint();
-    }
+
 
 }

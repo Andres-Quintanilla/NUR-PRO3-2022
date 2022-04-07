@@ -61,9 +61,16 @@ public class arbol {
     }
 
     public void dibujarArbol(Graphics g){
-               //arboles
-               g.setColor(Color.BLACK);
-               g.fillRect(x, y, tamano, tamano);
+        if(complejidad == 1) {
+            //arboles
+            g.setColor(Color.BLACK);
+            g.fillRect(x, y, tamano, tamano + 100);
+        }
+
+        int newtamano = tamano / 3;
+        int newComplejidad = complejidad - 1;
+
+
 
     }
 
