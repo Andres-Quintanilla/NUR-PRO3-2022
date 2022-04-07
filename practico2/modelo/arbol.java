@@ -61,10 +61,9 @@ public class arbol {
     }
 
     public void dibujarArbol(Graphics g){
-         //Dibujara solo la raiz proque complejidad es = 1
-            //arboles
-            g.setColor(Color.BLACK);
-            g.fillRect(x,y,tamano,tamano);
+               //arboles
+               g.setColor(Color.BLACK);
+               g.fillRect(x, y, tamano, tamano);
 
     }
 

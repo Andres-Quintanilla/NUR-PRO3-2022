@@ -20,8 +20,8 @@ public class panel extends JPanel implements PropertyChangeListener {
     public panel(paisaje p){
         paisaje = p;
         listaArbol = new ArrayList<>();
-
     }
+
     @Override
     public Dimension getPreferredSize(){
         return new Dimension(900,800);
@@ -32,10 +32,8 @@ public class panel extends JPanel implements PropertyChangeListener {
         super.paintComponent(g);
         if (paisaje != null){
             paisaje.dibujarPaisaje(g);
-            int aux=0;
             for (arbol lista: listaArbol) {
                 lista.dibujarArbol(g);
-                aux++;
             }
             repaint();
         }
@@ -54,4 +52,5 @@ public class panel extends JPanel implements PropertyChangeListener {
         listaArbol.add(aux);
        repaint();
     }
+
 }

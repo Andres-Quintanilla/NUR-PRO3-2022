@@ -30,22 +30,6 @@ public class ventana extends JFrame implements MouseListener {
 
         this.getContentPane().add(panel,BorderLayout.CENTER);
 
-        //Menu
-        JMenuBar bar = new JMenuBar();
-        JMenu mnu = new JMenu("Archivo");
-        bar.add(mnu);
-        JMenuItem item = new JMenuItem("Borrar Arboles");
-        item.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Se eliminaron los arboles dibujados");
-                init();
-            }
-        });
-
-        mnu.add(item);
-        this.setJMenuBar(bar);
-
         this.pack();
     }
 
@@ -57,7 +41,6 @@ public class ventana extends JFrame implements MouseListener {
             panel.crearArbol(e.getXOnScreen()-30,e.getYOnScreen()-80);
         }
     }
-
 
     //Sin usar
     @Override
