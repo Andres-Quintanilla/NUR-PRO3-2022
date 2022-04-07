@@ -9,12 +9,14 @@ public class arbol {
     private int x;
     private int y;
     private int tamano;
+    private int complejidad;
     private Color color;
 
-    public arbol(int tamano) {
-        x=0;
-        y=0;
+    public arbol(int x, int y,int tamano, int complejidad) {
+        this.x = x;
+        this.y = y;
         this.tamano = tamano;
+        this.complejidad = complejidad;
         cambios = new PropertyChangeSupport(this);
     }
 
@@ -26,6 +28,14 @@ public class arbol {
         this.tamano = tamano;
     }
 
+    public int getComplejidad() {
+        return complejidad;
+    }
+
+    public void setComplejidad(int complejidad) {
+        this.complejidad = complejidad;
+    }
+
     public Color getColor() {
         return color;
     }
@@ -34,28 +44,28 @@ public class arbol {
         this.color = color;
     }
 
-    public void dibujarPaisaje(Graphics g){
-        //Cielo
-        g.setColor(Color.blue);
-        g.fillRect(x,y,650 + tamano,100 + tamano);
-        //suelo
-        g.setColor(Color.GREEN);
-        g.fillRect(x,y + 350,650 + tamano,200 + tamano);
-        //sol
-        g.setColor(Color.yellow);
-        g.fillOval(x + 645,y + 5,tamano - 50,tamano - 50);
+    public int getX() {
+        return x;
     }
 
-    private void dibujarArbol(Graphics g, int x,int y, int tamano, int complejidad){
-        if(complejidad == 1){ //Dibujara solo la raiz proque complejidad es = 1
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public void dibujarArbol(Graphics g){
+         //Dibujara solo la raiz proque complejidad es = 1
             //arboles
             g.setColor(Color.BLACK);
             g.fillRect(x,y,tamano,tamano);
-            return;
-        }else{
 
-            g.fillRect(x,y,tamano, tamano);
-        }
     }
 
     public void addObserver(PropertyChangeListener listener){

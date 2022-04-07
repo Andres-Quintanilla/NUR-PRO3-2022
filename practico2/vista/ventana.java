@@ -1,6 +1,7 @@
 package practico2.vista;
 
 import practico2.modelo.arbol;
+import practico2.modelo.paisaje;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,9 +10,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+
 public class ventana extends JFrame implements MouseListener {
     private arbol modelo;
     private panel panel;
+    private practico2.modelo.paisaje paisaje;
 
     public ventana(){
         init();
@@ -22,8 +25,9 @@ public class ventana extends JFrame implements MouseListener {
         this.setTitle("Paisaje");
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.getContentPane().setLayout(new BorderLayout());
-        modelo = new arbol(250);
-        panel = new panel(modelo);
+        paisaje = new paisaje(250);
+        panel = new panel(paisaje);
+
         this.getContentPane().add(panel,BorderLayout.CENTER);
 
         //Menu
@@ -34,7 +38,7 @@ public class ventana extends JFrame implements MouseListener {
         item.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Se ilimnaron los arboles dibujados");
+                System.out.println("Se eliminaron los arboles dibujados");
                 init();
             }
         });
@@ -48,15 +52,14 @@ public class ventana extends JFrame implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(e.getButton() == 1 && e.getX() >= 0 && e.getX() <= 900 && e.getY() >= 350  && e.getY() <= 860 ){
-            //modelo.dibujarArbol();
+        if(e.getButton() == MouseEvent.BUTTON1 && e.getX() >= 0 && e.getX() <= 900 && e.getY() >= 350  && e.getY() <= 860 ){
             System.out.println("Click... se dibuja el arbol");
-            repaint();
+            panel.crearArbol(e.getXOnScreen(),e.getYOnScreen()-50);
         }
     }
 
 
-    // Sin usar
+    //Sin usar
     @Override
     public void mousePressed(MouseEvent e) {
 
