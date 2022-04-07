@@ -11,7 +11,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class ventana extends JFrame implements MouseListener {
-    private arbol modelo;
+
     private panel panel;
     private paisaje paisaje;
     private static Logger log = LogManager.getRootLogger();

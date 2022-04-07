@@ -67,8 +67,7 @@ public class arbol {
             g.fillRect(x, y, tamano, tamano + 100);
         }
 
-        int newtamano = tamano / 3;
-        int newComplejidad = complejidad - 1;
+
 
 
 
