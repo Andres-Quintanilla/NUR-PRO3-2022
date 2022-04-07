@@ -5,16 +5,16 @@ import practico2.modelo.paisaje;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ventana extends JFrame implements MouseListener {
     private arbol modelo;
     private panel panel;
-    private practico2.modelo.paisaje paisaje;
+    private paisaje paisaje;
+    private static Logger log = LogManager.getRootLogger();
 
     public ventana(){
         init();
@@ -37,8 +37,8 @@ public class ventana extends JFrame implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         if(e.getButton() == MouseEvent.BUTTON1 && e.getX() >= 0 && e.getX() <= 900 && e.getY() >= 350  && e.getY() <= 860 ){
-            System.out.println("Click... se dibuja el arbol");
             panel.crearArbol(e.getXOnScreen()-30,e.getYOnScreen()-80);
+            log.info("Su árbol se agrego en:" + (e.getXOnScreen()-30) + " - " + (e.getYOnScreen()-80));
         }
     }
 

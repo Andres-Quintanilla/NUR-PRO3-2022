@@ -11,7 +11,7 @@ import java.awt.*;
 
         public void dibujarPaisaje(Graphics g){
         //Cielo
-        g.setColor(Color.blue);
+        g.setColor(Color.cyan);
         g.fillRect(0,0,650 + tamano,100 + tamano);
         //suelo
         g.setColor(Color.GREEN);

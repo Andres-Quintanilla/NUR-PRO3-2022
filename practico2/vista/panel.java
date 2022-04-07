@@ -11,9 +11,9 @@ import java.util.ArrayList;
 
 
 public class panel extends JPanel implements PropertyChangeListener {
-    //private arbol modelo;
+
     ArrayList<arbol> listaArbol;
-    private practico2.modelo.paisaje paisaje;
+    private paisaje paisaje;
     public panel(){
     }
 
