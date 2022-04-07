@@ -37,16 +37,16 @@ public class panel extends JPanel implements PropertyChangeListener {
         if (paisaje != null){
             paisaje.dibujarPaisaje(g);
             for (arbol lista: listaArbol) {
-                lista.dibujarArbol(g);
+                 lista.dibujar(g);
             }
             repaint();
         }
     }
 
     public void crearArbol(int x, int y) {
-        int complejidad = (int) ((y/100)-1);
+        int complejidad = ((y/100)-1);
         log.info("La complejidad tiene un valor de: " + complejidad);
-        arbol nuevoArbol = new arbol(x,y,10,complejidad);
+        arbol nuevoArbol = new arbol(x,y,complejidad);
         listaArbol.add(nuevoArbol);
         repaint();
     }
