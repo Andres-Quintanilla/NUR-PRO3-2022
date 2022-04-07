@@ -36,7 +36,7 @@ public class ventana extends JFrame implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(e.getButton() == MouseEvent.BUTTON1 && e.getX() >= 0 && e.getX() < 900 && e.getY() >= 310  && e.getY() < 775 ){
+        if(e.getButton() == MouseEvent.BUTTON1 && e.getX() >= 0 && e.getX() < 900 && e.getY() >= 310  && e.getY() <= 900 ){
             panel.crearArbol(e.getX()-12,e.getY()-80);
             log.info("Su árbol se agrego en:" + " X " + (e.getX()-12) + " - " + "Y " + (e.getY()-80));
         }
