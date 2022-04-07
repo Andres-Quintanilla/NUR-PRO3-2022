@@ -62,7 +62,6 @@ public class arbol {
 
     public void dibujarArbol(Graphics g){
         if(complejidad == 1) {
-            //arboles
             g.setColor(Color.BLACK);
             g.fillRect(x, y, tamano, tamano + 100);
         }

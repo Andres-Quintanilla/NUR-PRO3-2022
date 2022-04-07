@@ -44,10 +44,10 @@ public class panel extends JPanel implements PropertyChangeListener {
     }
 
     public void crearArbol(int x, int y) {
-        int complejidad = (int) (Math.random()*6+1);
+        int complejidad = (int) ((y/100)-1);
         log.info("La complejidad tiene un valor de: " + complejidad);
-        arbol aux = new arbol(x,y,10,complejidad);
-        listaArbol.add(aux);
+        arbol nuevoArbol = new arbol(x,y,10,complejidad);
+        listaArbol.add(nuevoArbol);
         repaint();
     }
 

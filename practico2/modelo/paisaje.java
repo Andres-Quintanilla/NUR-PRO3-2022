@@ -12,10 +12,10 @@ import java.awt.*;
         public void dibujarPaisaje(Graphics g){
         //Cielo
         g.setColor(Color.cyan);
-        g.fillRect(0,0,650 + tamano,100 + tamano);
+        g.fillRect(0,0,650 + tamano,60 + tamano);
         //suelo
         g.setColor(Color.GREEN);
-        g.fillRect(0,0 + 350,650 + tamano,200 + tamano);
+        g.fillRect(0,0 + 310,650 + tamano,240 + tamano);
         //sol
         g.setColor(Color.yellow);
         g.fillOval(0 + 645,0 + 5,tamano - 50,tamano - 50);
