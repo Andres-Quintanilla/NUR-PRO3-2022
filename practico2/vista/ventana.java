@@ -54,7 +54,7 @@ public class ventana extends JFrame implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         if(e.getButton() == MouseEvent.BUTTON1 && e.getX() >= 0 && e.getX() <= 900 && e.getY() >= 350  && e.getY() <= 860 ){
             System.out.println("Click... se dibuja el arbol");
-            panel.crearArbol(e.getXOnScreen(),e.getYOnScreen()-50);
+            panel.crearArbol(e.getXOnScreen()-30,e.getYOnScreen()-80);
         }
     }
 
