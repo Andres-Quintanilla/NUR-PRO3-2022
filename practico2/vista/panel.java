@@ -8,12 +8,15 @@ import java.awt.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 public class panel extends JPanel implements PropertyChangeListener {
 
     ArrayList<arbol> listaArbol;
     private paisaje paisaje;
+    private static Logger log = LogManager.getRootLogger();
 
     public panel(){
     }
@@ -42,7 +45,7 @@ public class panel extends JPanel implements PropertyChangeListener {
 
     public void crearArbol(int x, int y) {
         int complejidad = (int) (Math.random()*6+1);
-        System.out.println("Complejidad es = " + complejidad);
+        log.info("La complejidad tiene un valor de: " + complejidad);
         arbol aux = new arbol(x,y,10,complejidad);
         listaArbol.add(aux);
         repaint();
