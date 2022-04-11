@@ -9,7 +9,7 @@ public class arbol {
     private Color color;
     private int x;
     private int y;
-    private int tamano;
+    private int largo;
     private int angulo;
     private int complejidad;
 
@@ -17,7 +17,7 @@ public class arbol {
         this.x = x;
         this.y = y;
         this.complejidad = complejidad;
-        tamano = 100;
+        largo = 100;
         angulo = 0;
         cambios = new PropertyChangeSupport(this);
     }
@@ -56,26 +56,26 @@ public class arbol {
 
 
     public void dibujar(Graphics g){
-        dibujarArbol(g,tamano,angulo,x,y, complejidad);
+        dibujarArbol(g,largo,angulo,x,y, complejidad);
     }
 
-    private void  dibujarArbol(Graphics g, int tamano, int angulo, int x, int y, int complejidad){
+    private void  dibujarArbol(Graphics g, int largo, int angulo, int x, int y, int complejidad){
 
-        int xmover = (int)(Math.cos(Math.toRadians(angulo + 90))* tamano);
-        int ymover = (int)(Math.sin(Math.toRadians(angulo - 90))* tamano);
+        int xmover = (int)(Math.cos(Math.toRadians(angulo + 90))* largo);
+        int ymover = (int)(Math.sin(Math.toRadians(angulo - 90))* largo);
 
         g.setColor(Color.BLACK);
         g.drawLine(x,y,x + xmover,y + ymover);
 
-        if (tamano >= 1){
-            dibujarArbol(g, tamano - 100, angulo + 30, x + xmover, y + ymover, complejidad);
-            dibujarArbol(g, tamano - 100, angulo - 30, x + xmover, y + ymover, complejidad);
+        if (largo >= 1){
+            dibujarArbol(g, largo - 25, angulo + 30, x + xmover, y + ymover, complejidad);
+            dibujarArbol(g, largo - 25, angulo - 30, x + xmover, y + ymover, complejidad);
             return;
         }
         /*int newComplejidad = complejidad - 1;
         // complejidad 1
-        dibujarArbol(g, tamano - 100, angulo + 30, x + xmover, y + ymover, complejidad);
-        dibujarArbol(g, tamano - 100, angulo - 30, x + xmover, y + ymover, complejidad);
+        dibujarArbol(g, tamano - 100, angulo + 30, x + xmover, y + ymover, newComplejidad);
+        dibujarArbol(g, tamano - 100, angulo - 30, x + xmover, y + ymover, newComplejidad);
         // complejidad 2
         dibujarArbol(g, tamano - 50, angulo + 30, x + xmover, y + ymover, newComplejidad);
         dibujarArbol(g, tamano - 50, angulo - 30, x + xmover, y + ymover, newComplejidad);
