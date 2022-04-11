@@ -82,16 +82,16 @@ public class arbol {
             }
 
             int newComplejidad = complejidad - 1;
-            // complejidad 2
+
             dibujarArbol(g, largo - 50, angulo + 30, x + xmover, y + ymover, newComplejidad);
             dibujarArbol(g, largo - 50, angulo - 30, x + xmover, y + ymover, newComplejidad);
-            // complejidad 3
+
             dibujarArbol(g, largo - 34, angulo + 30, x + xmover, y + ymover, newComplejidad);
             dibujarArbol(g, largo - 34, angulo - 30, x + xmover, y + ymover, newComplejidad);
-            // complejidad 4
+
             dibujarArbol(g, largo - 25, angulo + 30, x + xmover, y + ymover, newComplejidad);
             dibujarArbol(g, largo - 25, angulo - 30, x + xmover, y + ymover, newComplejidad);
-            // complejidad 5
+
             dibujarArbol(g, largo - 20, angulo + 30, x + xmover, y + ymover, newComplejidad);
             dibujarArbol(g, largo - 20, angulo - 30, x + xmover, y + ymover, newComplejidad);
         }
