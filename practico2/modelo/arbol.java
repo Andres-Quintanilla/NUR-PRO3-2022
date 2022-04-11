@@ -1,5 +1,8 @@
 package practico2.modelo;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.awt.*;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -11,7 +14,10 @@ public class arbol {
     private int y;
     private int largo;
     private int angulo;
+    private int tamanoArbol;
     private int complejidad;
+    private static Logger log = LogManager.getRootLogger();
+
 
     public arbol(int x, int y, int complejidad) {
         this.x = x;
@@ -19,6 +25,7 @@ public class arbol {
         this.complejidad = complejidad;
         largo = 100;
         angulo = 0;
+        tamanoArbol = (int) (Math.random()*50+5);
         cambios = new PropertyChangeSupport(this);
     }
 
@@ -61,33 +68,33 @@ public class arbol {
 
     private void  dibujarArbol(Graphics g, int largo, int angulo, int x, int y, int complejidad){
 
-        int xmover = (int)(Math.cos(Math.toRadians(angulo + 90))* largo);
-        int ymover = (int)(Math.sin(Math.toRadians(angulo - 90))* largo);
+        int xmover = (int)(Math.cos(Math.toRadians(angulo + 90))* tamanoArbol);
+        int ymover = (int)(Math.sin(Math.toRadians(angulo - 90))* tamanoArbol);
 
         g.setColor(Color.BLACK);
         g.drawLine(x,y,x + xmover,y + ymover);
 
         if (largo >= 1){
-            dibujarArbol(g, largo - 25, angulo + 30, x + xmover, y + ymover, complejidad);
-            dibujarArbol(g, largo - 25, angulo - 30, x + xmover, y + ymover, complejidad);
-            return;
+            if(complejidad == 1){
+                dibujarArbol(g, largo - 100, angulo + 30, x + xmover, y + ymover, complejidad);
+                dibujarArbol(g, largo - 100, angulo - 30, x + xmover, y + ymover, complejidad);
+                return;
+            }
+
+            int newComplejidad = complejidad - 1;
+            // complejidad 2
+            dibujarArbol(g, largo - 50, angulo + 30, x + xmover, y + ymover, newComplejidad);
+            dibujarArbol(g, largo - 50, angulo - 30, x + xmover, y + ymover, newComplejidad);
+            // complejidad 3
+            dibujarArbol(g, largo - 34, angulo + 30, x + xmover, y + ymover, newComplejidad);
+            dibujarArbol(g, largo - 34, angulo - 30, x + xmover, y + ymover, newComplejidad);
+            // complejidad 4
+            dibujarArbol(g, largo - 25, angulo + 30, x + xmover, y + ymover, newComplejidad);
+            dibujarArbol(g, largo - 25, angulo - 30, x + xmover, y + ymover, newComplejidad);
+            // complejidad 5
+            dibujarArbol(g, largo - 20, angulo + 30, x + xmover, y + ymover, newComplejidad);
+            dibujarArbol(g, largo - 20, angulo - 30, x + xmover, y + ymover, newComplejidad);
         }
-        /*int newComplejidad = complejidad - 1;
-        // complejidad 1
-        dibujarArbol(g, tamano - 100, angulo + 30, x + xmover, y + ymover, newComplejidad);
-        dibujarArbol(g, tamano - 100, angulo - 30, x + xmover, y + ymover, newComplejidad);
-        // complejidad 2
-        dibujarArbol(g, tamano - 50, angulo + 30, x + xmover, y + ymover, newComplejidad);
-        dibujarArbol(g, tamano - 50, angulo - 30, x + xmover, y + ymover, newComplejidad);
-        // complejidad 3
-        dibujarArbol(g, tamano - 34, angulo + 30, x + xmover, y + ymover, newComplejidad);
-        dibujarArbol(g, tamano - 34, angulo - 30, x + xmover, y + ymover, newComplejidad);
-        // complejidad 4
-        dibujarArbol(g, tamano - 25, angulo + 30, x + xmover, y + ymover, newComplejidad);
-        dibujarArbol(g, tamano - 25, angulo - 30, x + xmover, y + ymover, newComplejidad);
-        // complejidad 5
-        dibujarArbol(g, tamano - 20, angulo + 30, x + xmover, y + ymover, newComplejidad);
-        dibujarArbol(g, tamano - 20, angulo - 30, x + xmover, y + ymover, newComplejidad);*/
 
     }
 
