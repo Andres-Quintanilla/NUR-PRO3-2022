@@ -42,49 +42,49 @@ public class ventanaImagen extends JFrame {
         item.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                btnMostrarImagen_clicked();
+                mostrarImagen_clicked();
             }
         });
         item.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                btnMostrarImagen_clicked();
+                mostrarImagen_clicked();
             }
         });
         item.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                btnMostrarImagen_clicked();
+                mostrarImagen_clicked();
             }
         });
         item.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                btnMostrarImagen_clicked();
+                mostrarImagen_clicked();
             }
         });
         gris.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                btnGris_clicked();
+                gris_clicked();
             }
         });
         item.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                btnMostrarImagen_clicked();
+                mostrarImagen_clicked();
             }
         });
         item.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                btnMostrarImagen_clicked();
+                mostrarImagen_clicked();
             }
         });
         item.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                btnMostrarImagen_clicked();
+                mostrarImagen_clicked();
             }
         });
 
@@ -100,11 +100,11 @@ public class ventanaImagen extends JFrame {
         this.pack();
     }
 
-    private void btnMostrarImagen_clicked(){
+    private void mostrarImagen_clicked(){
         modelo.leerImagen("c:/imagenes/paisaje.jpg");
     }
 
-    private void btnGris_clicked() {
+    private void gris_clicked() {
         transformacion tonosDeGris = new transformarTonoDeGris(modelo);
         tonosDeGris.transformar();
     }
