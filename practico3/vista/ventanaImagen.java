@@ -30,6 +30,8 @@ public class ventanaImagen extends JFrame {
         JMenu mnu = new JMenu("Archivo");
         bar.add(mnu);
         JMenuItem item = new JMenuItem("Añadir imagen");
+        JMenu mnu2 = new JMenu("Efectos");
+        bar.add(mnu2);
         JMenuItem rojo = new JMenuItem("Imagen con tonos de rojo");
         JMenuItem verde = new JMenuItem("Imagen con tonos de verde");
         JMenuItem azul = new JMenuItem("Imagen con tonos de azul");
@@ -87,13 +89,13 @@ public class ventanaImagen extends JFrame {
         });
 
         mnu.add(item);
-        mnu.add(rojo);
-        mnu.add(verde);
-        mnu.add(azul);
-        mnu.add(gris);
-        mnu.add(blancoYNegro);
-        mnu.add(espejoHorizontal);
-        mnu.add(espejoVertical);
+        mnu2.add(rojo);
+        mnu2.add(verde);
+        mnu2.add(azul);
+        mnu2.add(gris);
+        mnu2.add(blancoYNegro);
+        mnu2.add(espejoHorizontal);
+        mnu2.add(espejoVertical);
         this.setJMenuBar(bar);
         this.pack();
     }
