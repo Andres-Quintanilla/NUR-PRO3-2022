@@ -12,14 +12,10 @@ public class transformarTonoDeRojo extends transformacion{
         for (int i = 0; i < imagen.getAncho(); i++) {
             for (int j = 0; j < imagen.getAlto(); j++) {
                 int color = pixeles[i][j];
-
                 int r = (color >> 16);
-                int g = (color >> 8) & 0x000000ff;
-                int b = color & 0x000000ff;
 
-                int gris = (int)(((double)r + (double)g + (double)b) / 3.0 );
-                int intGris = gris + gris * 256 + gris * 256 * 256;
-                imagen.setColor(intGris,i,j);
+                color = (r<<16) | (0<<8) | 0;
+                imagen.setColor(color,i,j);
             }
         }
         imagen.transformada();

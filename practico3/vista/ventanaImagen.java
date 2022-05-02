@@ -1,9 +1,6 @@
 package practico3.vista;
 
-import practico3.modelo.Imagen;
-import practico3.modelo.imagenEspejoHorizontal;
-import practico3.modelo.transformacion;
-import practico3.modelo.transformarTonoDeGris;
+import practico3.modelo.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -49,19 +46,19 @@ public class ventanaImagen extends JFrame {
         rojo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                rojo_clicked();
             }
         });
         verde.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                verde_clicked();
             }
         });
         azul.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                azul_clicked();
             }
         });
         gris.addActionListener(new ActionListener() {
@@ -109,5 +106,16 @@ public class ventanaImagen extends JFrame {
         transformacion tonosDeGris = new transformarTonoDeGris(modelo);
         tonosDeGris.transformar();
     }
-
+    private void azul_clicked() {
+        transformacion tonosDeAzul = new transformarTonoDeAzul(modelo);
+        tonosDeAzul.transformar();
+    }
+    private void verde_clicked() {
+        transformacion tonosDeVerde = new transformarTonoDeVerde(modelo);
+        tonosDeVerde.transformar();
+    }
+    private void rojo_clicked() {
+        transformacion tonosDeRojo = new transformarTonoDeRojo(modelo);
+        tonosDeRojo.transformar();
+    }
 }
