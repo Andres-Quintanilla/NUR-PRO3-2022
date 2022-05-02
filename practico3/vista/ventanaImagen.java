@@ -46,22 +46,22 @@ public class ventanaImagen extends JFrame {
                 mostrarImagen_clicked();
             }
         });
-        item.addActionListener(new ActionListener() {
+        rojo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mostrarImagen_clicked();
+
             }
         });
-        item.addActionListener(new ActionListener() {
+        verde.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mostrarImagen_clicked();
+
             }
         });
-        item.addActionListener(new ActionListener() {
+        azul.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mostrarImagen_clicked();
+
             }
         });
         gris.addActionListener(new ActionListener() {
@@ -70,22 +70,22 @@ public class ventanaImagen extends JFrame {
                 gris_clicked();
             }
         });
-        item.addActionListener(new ActionListener() {
+        blancoYNegro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mostrarImagen_clicked();
+
             }
         });
-        item.addActionListener(new ActionListener() {
+        espejoHorizontal.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 espejoHorizontal();
             }
         });
-        item.addActionListener(new ActionListener() {
+        espejoVertical.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mostrarImagen_clicked();
+
             }
         });
 
@@ -112,6 +112,6 @@ public class ventanaImagen extends JFrame {
 
     private void espejoHorizontal(){
         imagenEspejoHorizontal h = new imagenEspejoHorizontal();
-
+        h.transformar();
     }
 }
