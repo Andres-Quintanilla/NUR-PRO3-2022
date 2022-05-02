@@ -79,7 +79,7 @@ public class ventanaImagen extends JFrame {
         espejoHorizontal.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                espejoHorizontal();
+
             }
         });
         espejoVertical.addActionListener(new ActionListener() {
@@ -110,8 +110,4 @@ public class ventanaImagen extends JFrame {
         tonosDeGris.transformar();
     }
 
-    private void espejoHorizontal(){
-        imagenEspejoHorizontal h = new imagenEspejoHorizontal();
-        h.transformar();
-    }
 }
