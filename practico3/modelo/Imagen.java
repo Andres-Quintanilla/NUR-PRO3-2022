@@ -70,6 +70,7 @@ public class Imagen {
         pixeles[i][j] = color;
     }
 
+
     public void addObserver(panelImagen panelimagen){
         cambios.addPropertyChangeListener(panelimagen);
     }

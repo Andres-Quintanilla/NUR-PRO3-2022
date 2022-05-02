@@ -1,6 +1,7 @@
 package practico3.vista;
 
 import practico3.modelo.Imagen;
+import practico3.modelo.imagenEspejoHorizontal;
 import practico3.modelo.transformacion;
 import practico3.modelo.transformarTonoDeGris;
 
@@ -78,7 +79,7 @@ public class ventanaImagen extends JFrame {
         item.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mostrarImagen_clicked();
+                espejoHorizontal();
             }
         });
         item.addActionListener(new ActionListener() {
@@ -107,5 +108,10 @@ public class ventanaImagen extends JFrame {
     private void gris_clicked() {
         transformacion tonosDeGris = new transformarTonoDeGris(modelo);
         tonosDeGris.transformar();
+    }
+
+    private void espejoHorizontal(){
+        imagenEspejoHorizontal h = new imagenEspejoHorizontal();
+
     }
 }
