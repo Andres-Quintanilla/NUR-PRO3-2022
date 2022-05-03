@@ -37,9 +37,7 @@ public class ventanaImagen extends JFrame {
         JMenuItem verde = new JMenuItem("Imagen con tonos de verde");
         JMenuItem azul = new JMenuItem("Imagen con tonos de azul");
         JMenuItem gris = new JMenuItem("Imagen con tonos de gris");
-        //JMenuItem blancoYNegro = new JMenuItem("Imagen con tonos de blanco y negro");
-        JMenuItem espejoHorizontal = new JMenuItem("Imagen en modo espejo horizontal");
-        JMenuItem espejoVertical = new JMenuItem("Imagen en modo espejo vertical");
+
         item.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
