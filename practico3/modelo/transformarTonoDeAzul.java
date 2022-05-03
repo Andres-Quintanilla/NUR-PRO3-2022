@@ -11,9 +11,9 @@ public class transformarTonoDeAzul extends transformacion {
         for (int i = 0; i < imagen.getAncho(); i++) {
             for (int j = 0; j < imagen.getAlto(); j++) {
                 int color = pixeles[i][j];
-                int b = color&0xff;
+                int b = color & 0xff;
 
-                color =(0<<16) | (0<<8) | b;
+                color =(0<<16) | (0 <<8) | b;
                 imagen.setColor(color,i,j);
             }
         }
