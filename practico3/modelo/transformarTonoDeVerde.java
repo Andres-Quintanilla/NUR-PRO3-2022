@@ -11,7 +11,7 @@ public class transformarTonoDeVerde extends transformacion {
         for (int i = 0; i < imagen.getAncho(); i++) {
             for (int j = 0; j < imagen.getAlto(); j++) {
                 int color = pixeles[i][j];
-                int g = (color>>8)&0xff;
+                int g = (color>>8) & 0xff;
 
                 color =(0<<16) | (g<<8) | 0;
                 imagen.setColor(color,i,j);
