@@ -6,10 +6,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ventanaImagen extends JFrame {
     private Imagen modelo;
     private panelImagen panel;
+    private static Logger log = LogManager.getRootLogger();
 
     public ventanaImagen(){
         init();
@@ -41,48 +44,53 @@ public class ventanaImagen extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mostrarImagen_clicked();
+                log.info("Se abrio la imagen");
             }
         });
         rojo.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 rojo_clicked();
+                log.info("Selecciono el filtro rojo para la imagen");
             }
         });
         verde.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 verde_clicked();
+                log.info("Selecciono el filtro verde para la imagen");
             }
         });
         azul.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 azul_clicked();
+                log.info("Selecciono el filtro azul para la imagen");
             }
         });
         gris.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 gris_clicked();
+                log.info("Selecciono el filtro gris para la imagen");
             }
         });
         blancoYNegro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                log.info("Selecciono el filtro blancho y negro para la imagen");
             }
         });
         espejoHorizontal.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                log.info("La imagen esta en espejo horizontal");
             }
         });
         espejoVertical.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                log.info("La imagen esta en vertical horizontal");
             }
         });
 
