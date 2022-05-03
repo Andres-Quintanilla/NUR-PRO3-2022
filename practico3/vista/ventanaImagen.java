@@ -37,7 +37,7 @@ public class ventanaImagen extends JFrame {
         JMenuItem verde = new JMenuItem("Imagen con tonos de verde");
         JMenuItem azul = new JMenuItem("Imagen con tonos de azul");
         JMenuItem gris = new JMenuItem("Imagen con tonos de gris");
-        JMenuItem blancoYNegro = new JMenuItem("Imagen con tonos de blanco y negro");
+        //JMenuItem blancoYNegro = new JMenuItem("Imagen con tonos de blanco y negro");
         JMenuItem espejoHorizontal = new JMenuItem("Imagen en modo espejo horizontal");
         JMenuItem espejoVertical = new JMenuItem("Imagen en modo espejo vertical");
         item.addActionListener(new ActionListener() {
@@ -75,33 +75,12 @@ public class ventanaImagen extends JFrame {
                 log.info("Selecciono el filtro gris para la imagen");
             }
         });
-        blancoYNegro.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                log.info("Selecciono el filtro blancho y negro para la imagen");
-            }
-        });
-        espejoHorizontal.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                log.info("La imagen esta en espejo horizontal");
-            }
-        });
-        espejoVertical.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                log.info("La imagen esta en vertical horizontal");
-            }
-        });
 
         mnu.add(item);
         mnu2.add(rojo);
         mnu2.add(verde);
         mnu2.add(azul);
         mnu2.add(gris);
-        mnu2.add(blancoYNegro);
-        mnu2.add(espejoHorizontal);
-        mnu2.add(espejoVertical);
         this.setJMenuBar(bar);
         this.pack();
     }
@@ -126,4 +105,5 @@ public class ventanaImagen extends JFrame {
         transformacion tonosDeRojo = new transformarTonoDeRojo(modelo);
         tonosDeRojo.transformar();
     }
+
 }
