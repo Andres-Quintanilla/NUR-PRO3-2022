@@ -8,7 +8,7 @@ public class practico3 {
     private static Logger log = LogManager.getRootLogger();
     public static void main(String[] args) {
         ventanaImagen v = new ventanaImagen();
-        log.info("Se ha iniciado el proyecto de paisaje");
+        log.info("Se ha iniciado el proyecto filtro para imagenes");
         v.setVisible(true);
     }
 }
