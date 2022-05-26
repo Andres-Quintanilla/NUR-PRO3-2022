@@ -57,7 +57,7 @@ public class ventana extends JFrame {
 
         btnborrar.addActionListener(actionEvent -> {
             //modelo.eliminar(2);
-            txtareaArchivo.setText("");
+            //txtareaArchivo.setText("");
             log.info("Se limpio el campo de texto");
         });
     }

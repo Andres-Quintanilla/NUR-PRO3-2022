@@ -11,13 +11,6 @@ public class lista<E> implements Iterable<E> {
         tamanoCadena = 0;
     }
 
-    public void insertar(E o) {
-        Nodo<E> nuevo = new Nodo<>(o);
-        nuevo.setSiguiente(raiz);
-        raiz = nuevo;
-        tamanoCadena++;
-    }
-
     public void adicionar(E o){
         Nodo<E> nuevo = new Nodo<>(o);
 
@@ -59,6 +52,11 @@ public class lista<E> implements Iterable<E> {
         actual.setSiguiente(siguienteDelSiguiente);
         tamanoCadena--;
     }
+
+    public int tamano(){
+        return this.tamanoCadena;
+    }
+
     @Override
     public Iterator<E> iterator() {
         return new IteradorLista<>(raiz);
