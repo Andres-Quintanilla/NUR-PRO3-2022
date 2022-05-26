@@ -82,7 +82,7 @@ public class ventana extends JFrame {
 
                     if(m.find()){
                         resultado = m.group(1).toUpperCase() + m.group(2).toLowerCase() + " " + m.group(3).toUpperCase() + m.group(4).toLowerCase + " " +
-                            m.group(5).toUpperCase() + m.group(6).toLowerCase();
+                            m.group(5).toUpperCase() + m.group(6).toLowerCase() + " " + m.group(7);
                     }
                 }*/
                 numero++;
