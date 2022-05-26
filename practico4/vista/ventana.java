@@ -2,6 +2,7 @@ package practico4.vista;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import practico4.modelo.lista;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,6 +11,7 @@ import java.io.File;
 import java.io.FileReader;
 
 public class ventana extends JFrame {
+    private lista modelo;
     private JLabel lbmensaje = new JLabel("Selecciona el archivo que quieres leer:");
     private JButton btnseleccionar = new JButton("Seleccionar");
     private JButton btnborrar = new JButton("Borrar");
@@ -54,6 +56,7 @@ public class ventana extends JFrame {
         });
 
         btnborrar.addActionListener(actionEvent -> {
+            //modelo.eliminar(2);
             txtareaArchivo.setText("");
             log.info("Se limpio el campo de texto");
         });
@@ -69,6 +72,7 @@ public class ventana extends JFrame {
             String linea= "";
             while((linea = lector.readLine()) != null){
                 texto+= linea + "\n";
+
             }
             txtareaArchivo.setText(texto);
             log.info("Archivo leído correctamente");

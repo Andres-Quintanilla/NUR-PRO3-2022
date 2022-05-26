@@ -4,33 +4,52 @@ import java.util.Iterator;
 
 public class lista<E> implements Iterable<E> {
     protected Nodo<E> raiz;
-    protected int cantidad;
+    protected int tamanoCadena;
 
     public lista(){
         this.raiz = null;
-        cantidad = 0;
+        tamanoCadena = 0;
     }
 
-    @Override
-    public Iterator<E> iterator() {
-        return new IteradorLista<>(raiz);
+    public void insertar(E o) {
+        Nodo<E> nuevo = new Nodo<>(o);
+        nuevo.setSiguiente(raiz);
+        raiz = nuevo;
+        tamanoCadena++;
     }
 
-    public void eliminar(int pos) {
+    public void adicionar(E o){
+        Nodo<E> nuevo = new Nodo<>(o);
 
-        if (pos < 0 || pos > cantidad) {
-            throw new ArrayIndexOutOfBoundsException("La lista solo tiene " + cantidad);
+        if(raiz == null){
+            raiz = nuevo;
+            tamanoCadena++;
+            return;
         }
 
-        if (pos == 0){
+        Nodo<E> actual = raiz;
+        while(actual.getSiguiente() != null){
+            actual = actual.getSiguiente();
+        }
+
+        actual.setSiguiente(nuevo);
+        tamanoCadena++;
+    }
+
+    public void eliminar(int pos){
+        if (pos < 0 || pos > tamanoCadena){
+            throw new ArrayIndexOutOfBoundsException("La lista solo tiene: " + tamanoCadena);
+        }
+
+        if(pos == 0){
             raiz = raiz.getSiguiente();
-            cantidad--;
+            tamanoCadena--;
             return;
         }
 
         Nodo<E> actual = raiz;
         int posActual = 0;
-        while(posActual < (pos-1)) {
+        while (posActual < (pos - 1)){
             posActual++;
             actual = actual.getSiguiente();
         }
@@ -38,40 +57,39 @@ public class lista<E> implements Iterable<E> {
         Nodo<E> siguienteDelSiguiente = actual.getSiguiente().getSiguiente();
         actual.getSiguiente().setSiguiente(null);
         actual.setSiguiente(siguienteDelSiguiente);
-        cantidad--;
+        tamanoCadena--;
+    }
+    @Override
+    public Iterator<E> iterator() {
+        return new IteradorLista<>(raiz);
     }
 
     static class Nodo<E>{
         private E contenido;
         private Nodo<E> siguiente;
 
-        public Nodo(E contenido) {
+        public Nodo(E contenido){
             this.contenido = contenido;
             this.siguiente = null;
         }
 
-        public E getContenido() {
+        public E getContenido(){
             return contenido;
         }
 
-        public Nodo<E> getSiguiente() {
+        public Nodo<E> getSiguiente(){
             return siguiente;
         }
 
-        public void setSiguiente(Nodo<E> siguiente) {
+        public void  setSiguiente(Nodo<E> siguiente){
             this.siguiente = siguiente;
-        }
-
-        @Override
-        public String toString() {
-            return "Nodo{" + contenido +'}';
         }
     }
 
-    static class IteradorLista<E> implements Iterator<E> {
-
+    static class  IteradorLista<E> implements Iterator<E>{
         private Nodo<E> actual;
-        public IteradorLista(Nodo<E> r) {
+
+        public IteradorLista(Nodo<E> r){
             actual = r;
         }
 
