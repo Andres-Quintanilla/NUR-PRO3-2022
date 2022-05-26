@@ -22,6 +22,8 @@ public class ventana extends JFrame {
     private String texto = "";
     private String linea = "";
     private String resultado;
+    private int x = 30;
+    private int y = 30;
 
     public ventana(){
         init();
@@ -33,8 +35,6 @@ public class ventana extends JFrame {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setLayout(null);
-        int x = 30;
-        int y = 30;
         lbmensaje.setBounds(x,y,219,24);
         x+=250;
         btnseleccionar.setBounds(x,y,102,24);
