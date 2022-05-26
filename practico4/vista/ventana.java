@@ -18,7 +18,10 @@ public class ventana extends JFrame {
     private JButton btnborrar = new JButton("Borrar");
     private TextArea txtareaArchivo = new TextArea();
     private static Logger log = LogManager.getRootLogger();
-    private String expresion = "^([A-z]+)\\s([A-z]+)([A-z])\\s([A-z]+)([A-z])\\s([1-9]+)$";
+    private String expresion = "^([A-z])([a-z]+)\\s([A-z])([a-z]+)\\s([A-z])([a-z]+)\\s([1-9]+)$";
+    private String texto = "";
+    private String linea = "";
+    private String resultado;
 
     public ventana(){
         init();
@@ -57,8 +60,7 @@ public class ventana extends JFrame {
         });
 
         btnborrar.addActionListener(actionEvent -> {
-            //modelo.eliminar(2);
-            //txtareaArchivo.setText("");
+            txtareaArchivo.setText("");
             log.info("Se limpio el campo de texto");
         });
     }
@@ -69,15 +71,18 @@ public class ventana extends JFrame {
         try{
             FileReader fr = new FileReader(archivo);
             BufferedReader lector = new BufferedReader(fr);
-            String texto= "";
-            String linea= "";
             while((linea = lector.readLine()) != null){
                 texto+= linea + "\n";
 
-                for (int i = 0; i < texto.length(); i++) {
-                    Pattern r = Pattern.compile(texto);
+                /*for (int i = 0; i < tests2.length(); i++) {
+                    Pattern r = Pattern.compile(expresion);
+                    Matcher m = r.matcher(tests2[i]);
 
-                }
+                    if(m.find()){
+                        resultado = m.group(1).toUpperCase() + m.group(2).toLowerCase() + " " + m.group(3).toUpperCase() + m.group(4).toLowerCase + " " +
+                            m.group(5).toUpperCase() + m.group(6).toLowerCase();
+                    }
+                }*/
 
             }
             txtareaArchivo.setText(texto);
