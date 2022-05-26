@@ -9,6 +9,7 @@ import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.regex.Pattern;
 
 public class ventana extends JFrame {
     private lista modelo;
@@ -17,7 +18,7 @@ public class ventana extends JFrame {
     private JButton btnborrar = new JButton("Borrar");
     private TextArea txtareaArchivo = new TextArea();
     private static Logger log = LogManager.getRootLogger();
-
+    private String expresion = "^([A-z]+)\\s([A-z]+)([A-z])\\s([A-z]+)([A-z])\\s([1-9]+)$";
 
     public ventana(){
         init();
@@ -72,6 +73,11 @@ public class ventana extends JFrame {
             String linea= "";
             while((linea = lector.readLine()) != null){
                 texto+= linea + "\n";
+
+                for (int i = 0; i < texto.length(); i++) {
+                    Pattern r = Pattern.compile(texto);
+
+                }
 
             }
             txtareaArchivo.setText(texto);
