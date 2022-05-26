@@ -17,13 +17,15 @@ public class ventana extends JFrame {
     private JButton btnseleccionar = new JButton("Seleccionar");
     private JButton btnborrar = new JButton("Borrar");
     private TextArea txtareaArchivo = new TextArea();
-    private static Logger log = LogManager.getRootLogger();
     private String expresion = "^([A-z])([a-z]+)\\s([A-z])([a-z]+)\\s([A-z])([a-z]+)\\s([1-9]+)$";
     private String texto = "";
     private String linea = "";
     private String resultado;
     private int x = 30;
     private int y = 30;
+    private int numero = 1;
+    private static Logger log = LogManager.getRootLogger();
+
 
     public ventana(){
         init();
@@ -72,7 +74,7 @@ public class ventana extends JFrame {
             FileReader fr = new FileReader(archivo);
             BufferedReader lector = new BufferedReader(fr);
             while((linea = lector.readLine()) != null){
-                texto+= linea + "\n";
+                texto+= numero + ".- " + linea + "\n";
 
                 /*for (int i = 0; i < tests2.length(); i++) {
                     Pattern r = Pattern.compile(expresion);
@@ -83,7 +85,7 @@ public class ventana extends JFrame {
                             m.group(5).toUpperCase() + m.group(6).toLowerCase();
                     }
                 }*/
-
+                numero++;
             }
             txtareaArchivo.setText(texto);
             log.info("Archivo leído correctamente");
