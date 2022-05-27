@@ -64,7 +64,10 @@ public class ventana extends JFrame {
         });
 
         btnborrar.addActionListener(actionEvent -> {
-
+            l.eliminar(2);
+            for (String s : l) {
+                log.info(s);
+            }
         });
     }
     private void mostrarTextoDelArchivo(){
@@ -79,16 +82,16 @@ public class ventana extends JFrame {
                 l.adicionar(texto);
                 numero++;
             }
+            Pattern r = Pattern.compile(expresion);// Nos permite obtener la expresion regular
             for (int i = 0; i < l.tamano(); i++) {
-               Pattern r = Pattern.compile(expresion);// Nos permite obtener la expresion regular
-                Matcher m = r.matcher(l.obtener(i));// Nos permite comprobar si un string cumple la expresion regular
+            Matcher m = r.matcher(l.obtener(i));// Nos permite comprobar si un string cumple la expresion regular
                 // find nos permite buscar que se cumplan una seria de reglas de busqueda
                 if(m.find()){
                     resultado = m.group(1).toUpperCase() + m.group(2).toLowerCase() + " " + m.group(3).toUpperCase() +
                             m.group(4).toLowerCase() + " " + m.group(5).toUpperCase() + m.group(6).toLowerCase() + " " + m.group(7);
-
+                    txtareaArchivo.setText(resultado);
                 }
-                log.info(resultado);
+                //log.info(l.obtener(i));
                 txtareaArchivo.setText(l.obtener(i));
             }
             log.info("Archivo leído correctamente");
