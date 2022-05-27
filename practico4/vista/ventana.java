@@ -53,7 +53,7 @@ public class ventana extends JFrame {
         add(lbmensaje);
         add(btnseleccionar);
         add(txtareaArchivo);
-        add(btnborrar);
+       // add(btnborrar);
 
         cargarListener();
     }
@@ -64,11 +64,7 @@ public class ventana extends JFrame {
         });
 
         btnborrar.addActionListener(actionEvent -> {
-            try {
-                l.eliminar(2);
-            } catch(Exception e) {
-                System.out.println("No se puede eliminar: " + e.getMessage());
-            }
+
         });
     }
     private void mostrarTextoDelArchivo(){
@@ -83,20 +79,21 @@ public class ventana extends JFrame {
                 l.adicionar(texto);
                 numero++;
             }
-
             for (int i = 0; i < l.tamano(); i++) {
-                Pattern r = Pattern.compile(expresion);// Nos permite obtener la expresion regular
+               Pattern r = Pattern.compile(expresion);// Nos permite obtener la expresion regular
                 Matcher m = r.matcher(l.obtener(i));// Nos permite comprobar si un string cumple la expresion regular
                 // find nos permite buscar que se cumplan una seria de reglas de busqueda
                 if(m.find()){
                     resultado = m.group(1).toUpperCase() + m.group(2).toLowerCase() + " " + m.group(3).toUpperCase() +
                             m.group(4).toLowerCase() + " " + m.group(5).toUpperCase() + m.group(6).toLowerCase() + " " + m.group(7);
-                    log.info(resultado);
+
                 }
+                log.info(resultado);
+                txtareaArchivo.setText(l.obtener(i));
             }
             log.info("Archivo leído correctamente");
         } catch (Exception e) {
-            log.error("Error " + e.getMessage());
+            log.error("Error sin entrar " + e.getMessage());
         }
     }
 }
