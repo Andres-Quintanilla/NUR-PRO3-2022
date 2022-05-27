@@ -2,17 +2,18 @@ package practico4.vista;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import practico4.modelo.lista;
+import practico4.lista;
+
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ventana extends JFrame {
-    private lista modelo;
     private JLabel lbmensaje = new JLabel("Selecciona el archivo que quieres leer:");
     private JButton btnseleccionar = new JButton("Seleccionar");
     private JButton btnborrar = new JButton("Borrar");
@@ -24,6 +25,7 @@ public class ventana extends JFrame {
     private int x = 30;
     private int y = 30;
     private int numero = 1;
+    lista<String> l = new lista();
     private static Logger log = LogManager.getRootLogger();
 
 
@@ -62,8 +64,11 @@ public class ventana extends JFrame {
         });
 
         btnborrar.addActionListener(actionEvent -> {
-            txtareaArchivo.setText("");
-            log.info("Se limpio el campo de texto");
+            try {
+                l.eliminar(2);
+            } catch(Exception e) {
+                System.out.println("No se puede eliminar: " + e.getMessage());
+            }
         });
     }
     private void mostrarTextoDelArchivo(){
@@ -71,23 +76,24 @@ public class ventana extends JFrame {
         fc.showOpenDialog(null);
         File archivo = fc.getSelectedFile();
         try{
-            FileReader fr = new FileReader(archivo);
-            BufferedReader lector = new BufferedReader(fr);
+            FileReader fr = new FileReader(archivo);// nos permite leer el archivo
+            BufferedReader lector = new BufferedReader(fr);// es una clase que nos permite leer el texto del archivo
             while((linea = lector.readLine()) != null){
-                texto+= numero + ".- " + linea + "\n";
-
-                /*for (int i = 0; i < tests2.length(); i++) {
-                    Pattern r = Pattern.compile(expresion);
-                    Matcher m = r.matcher(tests2[i]);
-
-                    if(m.find()){
-                        resultado = m.group(1).toUpperCase() + m.group(2).toLowerCase() + " " + m.group(3).toUpperCase() + m.group(4).toLowerCase + " " +
-                            m.group(5).toUpperCase() + m.group(6).toLowerCase() + " " + m.group(7);
-                    }
-                }*/
+                texto += numero + ".- " + linea + "\n";
+                l.adicionar(texto);
                 numero++;
             }
-            txtareaArchivo.setText(texto);
+
+            for (int i = 0; i < l.tamano(); i++) {
+                Pattern r = Pattern.compile(expresion);// Nos permite obtener la expresion regular
+                Matcher m = r.matcher(l.obtener(i));// Nos permite comprobar si un string cumple la expresion regular
+                // find nos permite buscar que se cumplan una seria de reglas de busqueda
+                if(m.find()){
+                    resultado = m.group(1).toUpperCase() + m.group(2).toLowerCase() + " " + m.group(3).toUpperCase() +
+                            m.group(4).toLowerCase() + " " + m.group(5).toUpperCase() + m.group(6).toLowerCase() + " " + m.group(7);
+                    log.info(resultado);
+                }
+            }
             log.info("Archivo leído correctamente");
         } catch (Exception e) {
             log.error("Error " + e.getMessage());

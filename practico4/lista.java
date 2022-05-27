@@ -1,4 +1,4 @@
-package practico4.modelo;
+package practico4;
 
 import java.util.Iterator;
 
@@ -8,7 +8,7 @@ public class lista<E> implements Iterable<E> {
 
     public lista(){
         this.raiz = null;
-        tamanoCadena = 0;
+        tamanoCadena = 1;
     }
 
     public void adicionar(E o){
@@ -30,7 +30,7 @@ public class lista<E> implements Iterable<E> {
     }
 
     public void eliminar(int pos){
-        if (pos < 0 || pos > tamanoCadena){
+        if (pos < 0){
             throw new ArrayIndexOutOfBoundsException("La lista solo tiene: " + tamanoCadena);
         }
 
@@ -55,6 +55,19 @@ public class lista<E> implements Iterable<E> {
 
     public int tamano(){
         return this.tamanoCadena;
+    }
+    public E obtener(int pos) {
+        if (pos == 0)
+            return raiz.getContenido();
+
+        int posActual = 0;
+        Nodo<E> actual = raiz;
+        while(posActual < pos && actual != null) {
+            actual = actual.getSiguiente();
+            posActual += 1;
+        }
+
+        return actual.getContenido();
     }
 
     @Override
@@ -104,3 +117,4 @@ public class lista<E> implements Iterable<E> {
         }
     }
 }
+
