@@ -17,7 +17,7 @@ public class ventana extends JFrame {
     private JButton btnseleccionar = new JButton("Seleccionar");
     private JButton btnborrar = new JButton("Borrar");
     private TextArea txtareaArchivo = new TextArea();
-    private String expresion = "^([A-z])([a-z]+)\\s([A-z])([a-z]+)\\s([A-z])([a-z]+)\\s([1-9]+)$";
+    private String expresion = "^([A-z])([a-z]+)\\s([A-z])([a-z]+)\\s([A-z])([a-z]+)\\s([0-9]+)$";
     private String texto = "";
     private String linea = "";
     private String resultado;
