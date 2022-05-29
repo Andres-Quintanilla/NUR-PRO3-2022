@@ -120,4 +120,5 @@ public class ventana extends JFrame {
             log.info(l.obtener(i));
         }
     }
+
 }
