@@ -85,7 +85,7 @@ public class ventana extends JFrame {
             comparar();
             log.info("Archivo leído correctamente" + "\n");
         } catch (Exception e) {
-            log.error("Error sin entrar " + e.getMessage());
+            log.error("Error no se puede entrar al archivo " + e.getMessage());
         }
     }
 
@@ -102,7 +102,7 @@ public class ventana extends JFrame {
                 comparar();
                 log.info("Elemento eliminado correctamente");
             } catch(Exception e) {
-                System.out.println("No se puede eliminar: " + e.getMessage());
+                log.error("No se puede eliminar: " + e.getMessage());
             }
 
         }
