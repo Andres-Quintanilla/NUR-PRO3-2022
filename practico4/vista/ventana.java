@@ -90,6 +90,7 @@ public class ventana extends JFrame {
     }
 
     private void borrarTextoDelArchivo(){
+        log.info("\n");
         if(txtareaArchivo != null){
             txtareaArchivo.setText("");
             Iterator<String> iter = l.iterator();
