@@ -9,6 +9,7 @@ import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.Iterator;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,7 +21,6 @@ public class ventana extends JFrame {
     private JButton btnborrar = new JButton("Borrar");
     private TextArea txtareaArchivo = new TextArea();
     private String expresion = "^([A-z])([A-z]+)\\s([A-z])([A-z]+)\\s([A-z])([A-z]+)\\s([0-9]+)$";
-    private String expresion2 = "[0-9]";
     private String texto = "";
     private String linea = "";
     private String resultado;
@@ -69,7 +69,7 @@ public class ventana extends JFrame {
         });
 
         btnborrar.addActionListener(actionEvent -> {
-
+            borrarTextoDelArchivo();
         });
     }
     private void mostrarTextoDelArchivo(){
@@ -82,19 +82,42 @@ public class ventana extends JFrame {
                 linea = s.nextLine();
                 l.adicionar(linea);
             }
-            for (int i = 0; i < l.tamano(); i++) {
-                Pattern p = Pattern.compile(expresion);
-                Matcher m = p.matcher(l.obtener(i));
-                if (m.find()) {
-                    resultado = m.group(1).toUpperCase() + m.group(2).toLowerCase() + " " + m.group(3).toUpperCase() +
-                            m.group(4).toLowerCase() + " " + m.group(5).toUpperCase() + m.group(6).toLowerCase() + " " + m.group(7);
-                    txtareaArchivo.append(resultado + "\n");
-                }
-                log.info(l.obtener(i));
-            }
-            log.info("Archivo leído correctamente");
+            comparar();
+            log.info("Archivo leído correctamente" + "\n");
         } catch (Exception e) {
             log.error("Error sin entrar " + e.getMessage());
+        }
+    }
+
+    private void borrarTextoDelArchivo(){
+        if(txtareaArchivo != null){
+            txtareaArchivo.setText("");
+            Iterator<String> iter = l.iterator();
+            while(iter.hasNext()) {
+                String elemento = iter.next();
+            }
+
+            try {
+                l.eliminar(Integer.parseInt(txtborrar.getText()));
+                comparar();
+                log.info("Elemento eliminado correctamente");
+            } catch(Exception e) {
+                System.out.println("No se puede eliminar: " + e.getMessage());
+            }
+
+        }
+    }
+
+    private void comparar(){
+        for (int i = 0; i < l.tamano(); i++) {
+            Pattern p = Pattern.compile(expresion);
+            Matcher m = p.matcher(l.obtener(i));
+            if (m.find()) {
+                resultado = m.group(1).toUpperCase() + m.group(2).toLowerCase() + " " + m.group(3).toUpperCase() +
+                        m.group(4).toLowerCase() + " " + m.group(5).toUpperCase() + m.group(6).toLowerCase() + " " + m.group(7);
+                txtareaArchivo.append(resultado + "\n");
+            }
+            log.info(l.obtener(i));
         }
     }
 }
