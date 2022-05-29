@@ -8,7 +8,7 @@ public class lista<E> implements Iterable<E> {
 
     public lista(){
         this.raiz = null;
-        tamanoCadena = 1;
+        tamanoCadena = 0;
     }
 
     public void adicionar(E o){
@@ -97,7 +97,7 @@ public class lista<E> implements Iterable<E> {
         }
     }
 
-    static class  IteradorLista<E> implements Iterator<E>{
+    static class  IteradorLista<E> implements Iterator<E> {
         private Nodo<E> actual;
 
         public IteradorLista(Nodo<E> r){
@@ -117,4 +117,3 @@ public class lista<E> implements Iterable<E> {
         }
     }
 }
-

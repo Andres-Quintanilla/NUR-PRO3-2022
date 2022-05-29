@@ -4,27 +4,28 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import practico4.lista;
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ventana extends JFrame {
     private JLabel lbmensaje = new JLabel("Selecciona el archivo que quieres leer:");
+    private TextField txtborrar = new TextField();
     private JButton btnseleccionar = new JButton("Seleccionar");
     private JButton btnborrar = new JButton("Borrar");
     private TextArea txtareaArchivo = new TextArea();
     private String expresion = "^([A-z])([A-z]+)\\s([A-z])([A-z]+)\\s([A-z])([A-z]+)\\s([0-9]+)$";
+    private String expresion2 = "[0-9]";
     private String texto = "";
     private String linea = "";
     private String resultado;
     private int x = 30;
     private int y = 30;
-    private int numero = 1;
     lista<String> l = new lista();
     private static Logger log = LogManager.getRootLogger();
 
@@ -46,6 +47,9 @@ public class ventana extends JFrame {
         x+=370;
         btnborrar.setBounds(x,y,102,24);
         x-=370;
+        x+=490;
+        txtborrar.setBounds(x,y,45,25);
+        x-=490;
         y+=50;
         txtareaArchivo.setBounds(x,y,400,400);
         txtareaArchivo.setEditable(false);
@@ -53,7 +57,8 @@ public class ventana extends JFrame {
         add(lbmensaje);
         add(btnseleccionar);
         add(txtareaArchivo);
-       // add(btnborrar);
+        add(txtborrar);
+        add(btnborrar);
 
         cargarListener();
     }
@@ -64,10 +69,7 @@ public class ventana extends JFrame {
         });
 
         btnborrar.addActionListener(actionEvent -> {
-            l.eliminar(2);
-            for (String s : l) {
-                log.info(s);
-            }
+
         });
     }
     private void mostrarTextoDelArchivo(){
@@ -75,24 +77,20 @@ public class ventana extends JFrame {
         fc.showOpenDialog(null);
         File archivo = fc.getSelectedFile();
         try{
-            FileReader fr = new FileReader(archivo);// nos permite leer el archivo
-            BufferedReader lector = new BufferedReader(fr);// es una clase que nos permite leer el texto del archivo
-            while((linea = lector.readLine()) != null){
-                texto += numero + ".- " + linea + "\n";
-                l.adicionar(texto);
-                numero++;
+            Scanner s = new Scanner(archivo);
+            while (s.hasNextLine()){
+                linea = s.nextLine();
+                l.adicionar(linea);
             }
-            Pattern r = Pattern.compile(expresion);// Nos permite obtener la expresion regular
             for (int i = 0; i < l.tamano(); i++) {
-            Matcher m = r.matcher(l.obtener(i));// Nos permite comprobar si un string cumple la expresion regular
-                // find nos permite buscar que se cumplan una seria de reglas de busqueda
-                if(m.find()){
+                Pattern p = Pattern.compile(expresion);
+                Matcher m = p.matcher(l.obtener(i));
+                if (m.find()) {
                     resultado = m.group(1).toUpperCase() + m.group(2).toLowerCase() + " " + m.group(3).toUpperCase() +
                             m.group(4).toLowerCase() + " " + m.group(5).toUpperCase() + m.group(6).toLowerCase() + " " + m.group(7);
-                    txtareaArchivo.setText(resultado);
+                    txtareaArchivo.append(resultado + "\n");
                 }
-                //log.info(l.obtener(i));
-                txtareaArchivo.setText(l.obtener(i));
+                log.info(l.obtener(i));
             }
             log.info("Archivo leído correctamente");
         } catch (Exception e) {
