@@ -4,11 +4,17 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
 public class ventana extends JFrame {
+    DefaultTableModel modeloTabla = new DefaultTableModel();
+    JTable tabla = new JTable(modeloTabla);
+    private JLabel lbrutaDeArchivo = new JLabel("Ruta del archivo");
+    private TextField txtrutaDeArchivo = new TextField();
     private static Logger log = LogManager.getRootLogger();
     public ventana() {
         init();
@@ -41,6 +47,13 @@ public class ventana extends JFrame {
 
             }
         });
+        lbrutaDeArchivo.setBounds(0,0,91,50);
+        txtrutaDeArchivo.setBounds(95,15,470,25);
+        txtrutaDeArchivo.setEditable(false);
+        tabla.setBounds(10,50,550,470);
+        add(lbrutaDeArchivo);
+        add(txtrutaDeArchivo);
+        add(tabla);
         this.setJMenuBar(bar);
 
     }
@@ -49,6 +62,8 @@ public class ventana extends JFrame {
         JFileChooser fc = new JFileChooser();
         fc.showOpenDialog(null);
         File archivo = fc.getSelectedFile();
+        String rutaDeArchivo = fc.getSelectedFile().getPath();
+        txtrutaDeArchivo.setText(rutaDeArchivo);
 
     }
 }
