@@ -2,149 +2,134 @@ package practico6;
 
 import java.util.Iterator;
 
-public class lista<E> implements Iterable<E> {
-    protected Nodo<E> raiz;
-    protected int cantidad;
-    public lista() {
+public class lista<E> implements Iterable<E>{
+   protected nodo<E> raiz;
+   protected int tamano;
 
-        this.raiz = null;
-        cantidad = 0;
-    }
+   public lista(){
+       tamano = 0;
+   }
 
-    public void insertar(E o) {
-        Nodo<E> nuevo = new Nodo<>(o);
-        nuevo.setSiguiente(raiz);
-        raiz = nuevo;
-        cantidad++;
-    }
+   public nodo<E> getRaiz(){
+       return raiz;
+   }
 
-    public void adicionar(E o) {
-        Nodo<E> nuevo = new Nodo<>(o);
+   public void setRaiz(nodo<E> raiz){
+       this.raiz = raiz;
+   }
 
-        if (raiz == null) {
-            raiz = nuevo;
-            cantidad++;
-            return;
-        }
+   public int getTamano(){
+       return tamano;
+   }
 
-        Nodo<E> actual = raiz;
-        while(actual.getSiguiente() != null) {
-            actual = actual.getSiguiente();
-        }
+   public void insertar(E o){
+       nodo<E> nuevo = new nodo<>(o);
+       nuevo.setSiguiente(raiz);
+       raiz = nuevo;
+       tamano++;
+   }
 
-        actual.setSiguiente(nuevo);
-        cantidad++;
-    }
+   public void adicionar(E o){
+       nodo<E> nuevo = new nodo<>(o);
 
-    public E obtener(int pos) {
-        if (pos == 0)
-            return raiz.getContenido();
+       if (raiz == null){
+           raiz = nuevo;
+           tamano++;
+           return;
+       }
 
-        int posActual = 0;
-        Nodo<E> actual = raiz;
-        while(posActual < pos && actual != null) {
-            actual = actual.getSiguiente();
-            posActual += 1;
-        }
+       nodo<E> actual = raiz;
+       while (actual.getSiguiente() != null){
+           actual = actual.getSiguiente();
+       }
 
-        return actual.getContenido();
-    }
+       actual.setSiguiente(nuevo);
+       tamano++;
+   }
 
-    public Nodo<E> getRaiz() {
-        return raiz;
-    }
+   public void eliminar(int pos){
+       if (pos >= tamano){
+           return;
+       }
 
-    private void setRaiz(Nodo<E> raiz) {
-        this.raiz = raiz;
-    }
+       if (pos == 0){
+           raiz = raiz.getSiguiente();
+           tamano--;
+           return;
+       }
 
-    @Override
-    public String toString() {
-        if (raiz == null) {
-            return "VACIA";
-        }
+       int aux = 0;
+       nodo<E> actual = raiz;
+       while (actual != null && aux < (pos - 1)){
+           actual = actual.getSiguiente();
+           aux++;
+       }
 
-        StringBuilder result = new StringBuilder();
-        result.append("Lista: ");
-        String separador = "";
-        Nodo<E> actual = raiz;
-        while(actual != null) {
-            result.append(separador).append(actual);
-            actual = actual.getSiguiente();
-            separador = " -> ";
-        }
+       actual.setSiguiente(actual.getSiguiente().getSiguiente());
+       tamano--;
+   }
 
-        return result.toString();
-    }
+   public E get(int pos){
+       if (pos >= tamano){
+           return null;
+       }
+
+       if (pos == 0){
+           return raiz.getContenido();
+       }
+
+       int aux = 0;
+       nodo<E> actual = raiz;
+       while (actual != null && aux < pos){
+           actual = actual.getSiguiente();
+           aux++;
+       }
+
+       return actual.getContenido();
+   }
+
+   public E buscar(E id){
+       for (E o:this) {
+           if (o.equals(id)){
+               return o;
+           }
+       }
+       return null;
+   }
+
 
     @Override
     public Iterator<E> iterator() {
-        return new IteradorLista<>(raiz);
+        return new Iteradorlista<E>(this);
     }
 
-    public int tamano() {
-        return this.cantidad;
-    }
-
-    public void eliminar(int pos) {
-
-        if (pos < 0 || pos > cantidad) {
-            throw new ArrayIndexOutOfBoundsException("La lista solo tiene " + cantidad);
-        }
-
-        if (pos == 0){
-            raiz = raiz.getSiguiente();
-            cantidad--;
-            return;
-        }
-
-        Nodo<E> actual = raiz;
-        int posActual = 0;
-        while(posActual < (pos-1)) {
-            posActual++;
-            actual = actual.getSiguiente();
-        }
-
-        Nodo<E> siguienteDelSiguiente = actual.getSiguiente().getSiguiente();
-        actual.getSiguiente().setSiguiente(null);
-        actual.setSiguiente(siguienteDelSiguiente);
-        cantidad--;
-    }
-
-    static class Nodo<E> {
+     static class nodo<E>{
         private E contenido;
-        private Nodo<E> siguiente;
+        private nodo<E> siguiente;
 
-        public Nodo(E contenido) {
-            this.contenido = contenido;
-            this.siguiente = null;
+        public nodo(E o){
+            contenido = o;
+            siguiente = null;
         }
 
-        public E getContenido() {
+        public E getContenido(){
             return contenido;
         }
 
-        public Nodo<E> getSiguiente() {
+        public nodo<E> getSiguiente(){
             return siguiente;
         }
 
-        public void setSiguiente(Nodo<E> siguiente) {
+        public void setSiguiente(nodo<E> siguiente){
             this.siguiente = siguiente;
-        }
-
-        @Override
-        public String toString() {
-            return "Nodo{" + contenido +'}';
         }
     }
 
-    static class IteradorLista<E> implements Iterator<E> {
-
-        private Nodo<E> actual;
-        public IteradorLista(Nodo<E> r) {
-            actual = r;
+    static class Iteradorlista<E> implements Iterator<E>{
+        private nodo<E> actual;
+        public Iteradorlista(lista<E> lista){
+            actual = lista.getRaiz();
         }
-
         @Override
         public boolean hasNext() {
             return actual != null;
