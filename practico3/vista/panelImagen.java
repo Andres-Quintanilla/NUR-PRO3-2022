@@ -11,6 +11,7 @@ import java.beans.PropertyChangeListener;
 public class panelImagen extends JPanel implements PropertyChangeListener {
     private  final Imagen modelo;
 
+
     public panelImagen(Imagen m){
         modelo = m;
         modelo.addObserver(this);
@@ -34,6 +35,7 @@ public class panelImagen extends JPanel implements PropertyChangeListener {
         modelo.dibujar(g2d);
         g.drawImage(rms,0,0, null);
     }
+
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if(evt.getPropertyName() != "Imagen"){

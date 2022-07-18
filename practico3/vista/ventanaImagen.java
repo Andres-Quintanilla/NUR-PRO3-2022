@@ -37,6 +37,8 @@ public class ventanaImagen extends JFrame {
         JMenuItem verde = new JMenuItem("Imagen con tonos de verde");
         JMenuItem azul = new JMenuItem("Imagen con tonos de azul");
         JMenuItem gris = new JMenuItem("Imagen con tonos de gris");
+        JMenuItem aclarar = new JMenuItem("Aclarar Imagen");
+        JMenuItem oscurecer = new JMenuItem("oscurecer Imagen");
 
         item.addActionListener(new ActionListener() {
             @Override
@@ -73,12 +75,28 @@ public class ventanaImagen extends JFrame {
                 log.info("Selecciono el filtro gris para la imagen");
             }
         });
+        aclarar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                aclarar_clicked();
+                log.info("Selecciono el filtro para aclarar la imagen");
+            }
+        });
+        oscurecer.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                oscurecer_clicked();
+                log.info("Selecciono el filtro para aclarar la imagen");
+            }
+        });
 
         mnu.add(item);
         mnu2.add(rojo);
         mnu2.add(verde);
         mnu2.add(azul);
         mnu2.add(gris);
+        mnu2.add(aclarar);
+        mnu2.add(oscurecer);
         this.setJMenuBar(bar);
         this.pack();
     }
@@ -88,20 +106,31 @@ public class ventanaImagen extends JFrame {
     }
 
     private void gris_clicked() {
+        mostrarImagen_clicked();
         transformacion tonosDeGris = new transformarTonoDeGris(modelo);
         tonosDeGris.transformar();
     }
     private void azul_clicked() {
+        mostrarImagen_clicked();
         transformacion tonosDeAzul = new transformarTonoDeAzul(modelo);
         tonosDeAzul.transformar();
     }
     private void verde_clicked() {
+        mostrarImagen_clicked();
         transformacion tonosDeVerde = new transformarTonoDeVerde(modelo);
         tonosDeVerde.transformar();
     }
     private void rojo_clicked() {
+        mostrarImagen_clicked();
         transformacion tonosDeRojo = new transformarTonoDeRojo(modelo);
         tonosDeRojo.transformar();
     }
-
+    private void aclarar_clicked() {
+        transformacion aclarar = new aclararImagen(modelo,20);
+        aclarar.transformar();
+    }
+    private void oscurecer_clicked() {
+        transformacion oscurecer = new oscurecerImagen(modelo,20);
+        oscurecer.transformar();
+    }
 }
