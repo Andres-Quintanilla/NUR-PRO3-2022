@@ -19,7 +19,7 @@ public class panelImagen extends JPanel implements PropertyChangeListener {
 
     @Override
     public Dimension getPreferredSize(){
-        return new Dimension(600,600);
+        return new Dimension(800,460);
     }
 
     @Override

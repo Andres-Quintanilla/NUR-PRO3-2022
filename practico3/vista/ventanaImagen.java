@@ -10,8 +10,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class ventanaImagen extends JFrame {
+    private TextArea txtArea = new TextArea();
     private Imagen modelo;
     private panelImagen panel;
+    lista<String> l = new lista();
     private static Logger log = LogManager.getRootLogger();
 
     public ventanaImagen(){
@@ -97,6 +99,7 @@ public class ventanaImagen extends JFrame {
         mnu2.add(gris);
         mnu2.add(aclarar);
         mnu2.add(oscurecer);
+        add(txtArea);
         this.setJMenuBar(bar);
         this.pack();
     }
@@ -109,28 +112,34 @@ public class ventanaImagen extends JFrame {
         mostrarImagen_clicked();
         transformacion tonosDeGris = new transformarTonoDeGris(modelo);
         tonosDeGris.transformar();
+        l.adicionar("Tonos de gris");
     }
     private void azul_clicked() {
         mostrarImagen_clicked();
         transformacion tonosDeAzul = new transformarTonoDeAzul(modelo);
         tonosDeAzul.transformar();
+        l.adicionar("Tonos de azul");
     }
     private void verde_clicked() {
         mostrarImagen_clicked();
         transformacion tonosDeVerde = new transformarTonoDeVerde(modelo);
         tonosDeVerde.transformar();
+        l.adicionar("Tonos de verde");
     }
     private void rojo_clicked() {
         mostrarImagen_clicked();
         transformacion tonosDeRojo = new transformarTonoDeRojo(modelo);
         tonosDeRojo.transformar();
+        l.adicionar("Tonos de rojo");
     }
     private void aclarar_clicked() {
         transformacion aclarar = new aclararImagen(modelo,20);
         aclarar.transformar();
+        l.adicionar("Aclaro la imagen");
     }
     private void oscurecer_clicked() {
         transformacion oscurecer = new oscurecerImagen(modelo,20);
         oscurecer.transformar();
+        l.adicionar("Oscurecio la imagen");
     }
 }
