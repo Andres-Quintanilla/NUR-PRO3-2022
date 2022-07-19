@@ -1,5 +1,7 @@
 package practico8.vista;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import practico8.modelo.usuario;
 
 import javax.swing.*;
@@ -18,6 +20,7 @@ public class ventanaLogin extends JFrame {
     private String usuario, password, nombre;
     private boolean entrar = false;
     usuario u = new usuario();
+    private static Logger log = LogManager.getRootLogger();
 
     public ventanaLogin() {
         init();
@@ -57,16 +60,19 @@ public class ventanaLogin extends JFrame {
                 password = txtcontraseña.getText();
                 if(usuario.equals("") && password.equals("")){
                     JOptionPane.showMessageDialog(null, "Los espacios estan vacios, por favor ingrese sus datos");
+                    log.info("Los espacios estan vacios, por favor ingrese sus datos");
                     entrar = true;
                 }else if (usuario.equals("admin") && password.equals("admin")) {
                     u.setNombre("Andres Quintanilla Cuellar");
                     JOptionPane.showMessageDialog(null, "Bienvenido " + u.getNombre());
+                    log.info("Bienvenido " + u.getNombre());
                     ventanaPhotoshop v2 = new ventanaPhotoshop();
                     v2.setVisible(true);
                     dispose();
                     entrar = true;
                 } else {
                     JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
+                    log.info("Usuario o contraseña incorrectos");
                     txtusuario.setText("");
                     txtcontraseña.setText("");
                 }
