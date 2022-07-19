@@ -10,7 +10,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class ventanaImagen extends JFrame {
-    private TextArea txtArea = new TextArea();
     private Imagen modelo;
     private panelImagen panel;
     lista<String> l = new lista();
@@ -41,6 +40,7 @@ public class ventanaImagen extends JFrame {
         JMenuItem gris = new JMenuItem("Imagen con tonos de gris");
         JMenuItem aclarar = new JMenuItem("Aclarar Imagen");
         JMenuItem oscurecer = new JMenuItem("oscurecer Imagen");
+        JMenuItem convolucionar = new JMenuItem("convolucionar Imagen");
 
         item.addActionListener(new ActionListener() {
             @Override
@@ -91,6 +91,13 @@ public class ventanaImagen extends JFrame {
                 log.info("Selecciono el filtro para aclarar la imagen");
             }
         });
+        convolucionar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                convolucionar_clicked();
+                log.info("Selecciono el filtro para aclarar la imagen");
+            }
+        });
 
         mnu.add(item);
         mnu2.add(rojo);
@@ -99,7 +106,7 @@ public class ventanaImagen extends JFrame {
         mnu2.add(gris);
         mnu2.add(aclarar);
         mnu2.add(oscurecer);
-        add(txtArea);
+        mnu2.add(convolucionar);
         this.setJMenuBar(bar);
         this.pack();
     }
@@ -141,5 +148,9 @@ public class ventanaImagen extends JFrame {
         transformacion oscurecer = new oscurecerImagen(modelo,20);
         oscurecer.transformar();
         l.adicionar("Oscurecio la imagen");
+    }
+    private void convolucionar_clicked() {
+        transformacion convolucionar = new convolucionarImagen(modelo);
+        convolucionar.transformar();
     }
 }
