@@ -7,8 +7,6 @@ import java.beans.PropertyChangeListener;
 
 public class Kernel extends JPanel implements PropertyChangeListener {
     private JTextField textfield1;
-    private JLabel label1;
-    private JButton boton1;
 
     public Kernel() {
         textfield1=new JTextField();

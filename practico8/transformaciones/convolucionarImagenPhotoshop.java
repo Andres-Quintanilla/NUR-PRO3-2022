@@ -29,7 +29,7 @@ public class convolucionarImagenPhotoshop extends transformaciones{
 
     public int convolucionar(int[][] imagen, int[][] kernel, int fila, int columna) {
         int tope = kernel.length / 2; //variable que sirve de control para evitar que se desborde la mascara de la matriz
-        //short pixel = 0;
+
         int b = 0;
         int g = 0;
         int r = 0;
